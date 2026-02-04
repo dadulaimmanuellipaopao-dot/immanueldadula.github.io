@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Valentine 💘</title>
+
 <style>
   body {
     margin: 0;
@@ -12,6 +13,8 @@
     justify-content: center;
     align-items: center;
     font-family: 'Comic Sans MS', cursive;
+    overflow: hidden;
+    transition: background 1s ease;
   }
 
   .card {
@@ -23,6 +26,8 @@
     padding: 25px;
     position: relative;
     box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+    z-index: 2;
+    transition: background 1s ease;
   }
 
   h2 {
@@ -65,15 +70,58 @@
   .result {
     display: none;
   }
+
+  /* Floating Heart Rain */
+  .heart {
+    position: fixed;
+    top: -10px;
+    font-size: 22px;
+    animation: fall linear forwards;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  @keyframes fall {
+    to {
+      transform: translateY(110vh);
+      opacity: 0;
+    }
+  }
+
+  /* Night Sky Elements */
+  .moon {
+    position: fixed;
+    top: 50px;
+    right: 100px;
+    width: 80px;
+    height: 80px;
+    background: radial-gradient(circle at 30% 30%, #fff9a0, #f2d966); /* yellow moon */
+    border-radius: 50%;
+    z-index: 0;
+    display: none;
+    box-shadow: 0 0 30px rgba(255, 255, 160, 0.5); /* soft glow */
+  }
+
+  .star {
+    position: fixed;
+    background: white;
+    width: 2px;
+    height: 2px;
+    border-radius: 50%;
+    opacity: 0.8;
+    z-index: 0;
+  }
 </style>
 </head>
 
 <body>
 
+<div class="moon" id="moon"></div>
+
 <div class="card" id="question">
   <div class="hearts">💗 💕 💖</div>
   <h2>Do you love me? 💘</h2>
-  
+
   <button class="yes" onclick="yesClick()">Yes 💖</button>
   <button class="no" id="noBtn">No 💔</button>
 </div>
@@ -82,31 +130,67 @@
   <div class="hearts">💞 💝 💓</div>
   <h2>I knew it! 😍</h2>
   <p>Happy Valentine’s chamiee 💌</p>
-  <img src="4586_18_4586.webp"width="150" height="150">
+  <img src="4586_18_4586.webp" width="150" height="150">
 </div>
 
-<!-- 🎵 Valentine Song -->
+<!-- Valentine Song -->
 <audio id="loveSong" controls>
   <source src="Palagi - TJ Monterde (Lyric Video)  @dhorynmarimon_1770032259805.m4a" type="audio/mpeg">
 </audio>
 
 <script>
-  const noBtn = document.getElementById("noBtn");
-  const card = document.getElementById("question");
+const noBtn = document.getElementById("noBtn");
+const card = document.getElementById("question");
 
-  noBtn.addEventListener("mouseenter", () => {
-    const maxX = card.clientWidth - noBtn.offsetWidth;
-    const maxY = card.clientHeight - noBtn.offsetHeight;
+noBtn.addEventListener("mouseenter", () => {
+  const maxX = card.clientWidth - noBtn.offsetWidth;
+  const maxY = card.clientHeight - noBtn.offsetHeight;
+  noBtn.style.left = Math.random() * maxX + "px";
+  noBtn.style.top = Math.random() * maxY + "px";
+});
 
-    noBtn.style.left = Math.random() * maxX + "px";
-    noBtn.style.top = Math.random() * maxY + "px";
-  });
+/* Heart Rain */
+function createHeart() {
+  const heart = document.createElement("div");
+  heart.className = "heart";
+  heart.innerHTML = "💖";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.animationDuration = (2 + Math.random() * 3) + "s";
+  document.body.appendChild(heart);
+  setTimeout(() => heart.remove(), 5000);
+}
 
-  function yesClick() {
-    document.getElementById("question").style.display = "none";
-    document.getElementById("result").style.display = "block";
-    document.getElementById("loveSong").play(); // 🎶 play Palagi
+/* Stars Creation */
+function createStars(count) {
+  for (let i = 0; i < count; i++) {
+    const star = document.createElement("div");
+    star.className = "star";
+    star.style.top = Math.random() * window.innerHeight + "px";
+    star.style.left = Math.random() * window.innerWidth + "px";
+    star.style.width = Math.random() * 2 + 1 + "px";
+    star.style.height = star.style.width;
+    star.style.opacity = Math.random();
+    document.body.appendChild(star);
   }
+}
+
+function yesClick() {
+  document.getElementById("question").style.display = "none";
+  document.getElementById("result").style.display = "block";
+  document.getElementById("loveSong").play();
+
+  // Change background to night
+  document.body.style.background = "#0b0c2a";
+  
+  // Show moon
+  document.getElementById("moon").style.display = "block";
+
+  // Create stars
+  createStars(100);
+
+  // Start heart rain
+  setInterval(createHeart, 300);
+}
 </script>
 
 </body>
