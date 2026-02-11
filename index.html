@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Valentine 💘</title>
 
 <style>
   body {
     margin: 0;
     height: 100vh;
-    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+    background: linear-gradient(135deg, #ff9af2, #fad0c4);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -20,29 +21,26 @@
   .card {
     background: #fff;
     width: 350px;
-    height: 280px;
+    min-height: 280px;
     border-radius: 20px;
     text-align: center;
     padding: 25px;
     position: relative;
     box-shadow: 0 15px 30px rgba(0,0,0,0.2);
     z-index: 2;
-    transition: background 1s ease;
   }
 
   h2 {
     color: #ff4d6d;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
   }
 
   .hearts {
     font-size: 24px;
-    margin-bottom: 10px;
     animation: float 2s infinite alternate;
   }
 
   @keyframes float {
-    from { transform: translateY(0); }
     to { transform: translateY(-8px); }
   }
 
@@ -52,6 +50,7 @@
     border-radius: 25px;
     font-size: 16px;
     cursor: pointer;
+    margin: 8px;
   }
 
   .yes {
@@ -65,51 +64,91 @@
     position: absolute;
     left: 180px;
     top: 160px;
+    transition: 0.2s;
   }
 
   .result {
     display: none;
+    animation: fadeIn 1s forwards;
   }
 
-  /* Floating Heart Rain */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  /* Message Box */
+  #messageBox {
+    margin-top: 15px;
+    padding: 15px;
+    background: #fff0f5;
+    border-radius: 15px;
+    color: #ff4d6d;
+    font-size: 15px;
+    max-height: 160px;
+    overflow-y: auto;
+  }
+
+  /* Heart Rain */
   .heart {
     position: fixed;
     top: -10px;
     font-size: 22px;
     animation: fall linear forwards;
-    z-index: 1;
     pointer-events: none;
   }
 
   @keyframes fall {
-    to {
-      transform: translateY(110vh);
-      opacity: 0;
-    }
+    to { transform: translateY(110vh); opacity: 0; }
   }
 
-  /* Night Sky Elements */
+  /* Moon & Stars */
   .moon {
     position: fixed;
     top: 50px;
     right: 100px;
     width: 80px;
     height: 80px;
-    background: radial-gradient(circle at 30% 30%, #fff9a0, #f2d966); /* yellow moon */
+    background: radial-gradient(circle at 30% 30%, #fff9a0, #f2d966);
     border-radius: 50%;
-    z-index: 0;
     display: none;
-    box-shadow: 0 0 30px rgba(255, 255, 160, 0.5); /* soft glow */
+    box-shadow: 0 0 30px rgba(255,255,160,0.5);
   }
 
   .star {
     position: fixed;
     background: white;
-    width: 2px;
-    height: 2px;
     border-radius: 50%;
-    opacity: 0.8;
-    z-index: 0;
+  }
+
+  audio {
+    display: none;
+    margin-top: 10px;
+    width: 100%;
+  }
+
+  #page2, #page3 {
+    animation: fadeIn 0.8s ease forwards;
+  }
+
+  /* PAGE 3 SLIDESHOW */
+  .slideshow {
+    position: relative;
+    width: 250px;
+    height: 250px;
+    margin: auto;
+  }
+
+  .slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 1s ease;
+  }
+
+  .slide.active {
+    opacity: 1;
   }
 </style>
 </head>
@@ -118,29 +157,122 @@
 
 <div class="moon" id="moon"></div>
 
+<!-- QUESTION CARD -->
 <div class="card" id="question">
   <div class="hearts">💗 💕 💖</div>
-  <h2>Do you love me? 💘</h2>
-
+  <h2>Can you be my Valentine? 💘</h2>
+  
   <button class="yes" onclick="yesClick()">Yes 💖</button>
   <button class="no" id="noBtn">No 💔</button>
+  <h2 style="color: rgba(202, 50, 205, 0.961);">try to click no if you dare😝
+</h2>
+
 </div>
 
+<!-- RESULT CARD -->
 <div class="card result" id="result">
-  <div class="hearts">💞 💝 💓</div>
-  <h2>I knew it! 😍</h2>
-  <p>Happy Valentine’s chamiee 💌</p>
-  <img src="4586_18_4586.webp" width="150" height="150">
-</div>
 
-<!-- Valentine Song -->
-<audio id="loveSong" controls>
-  <source src="Palagi - TJ Monterde (Lyric Video)  @dhorynmarimon_1770032259805.m4a" type="audio/mpeg">
-</audio>
+  <!-- PAGE 2 -->
+  <div id="page2">
+    <div class="hearts">💞 💝 💓</div>
+    <h2>I knew it! 😍</h2>
+    <h2>HAPPY VALENTINE'S DAY CHAMIE</h2>
+
+    <!-- PAGE 2 IMAGE -->
+    <img src="4586_18_4586.webp" alt="flowers picture" width="250" height="250">
+
+    <button class="yes" onclick="goToPage3()">Next 💌</button>
+  </div>
+
+  <!-- PAGE 3 -->
+  <div id="page3" style="display:none;">
+    <div class="hearts">💖 💕 💗</div>
+    <h2 style="color: #ff9af2;"> your so pretty here po 💝</h2>
+
+    <!-- PAGE 3 SLIDESHOW -->
+    <div class="slideshow">
+      <img class="slide active" src="2514120e-2e14-464a-9a27-11dc09e0d581.jpg" width="250" height="250">
+      <img class="slide" src="4586_18_4586.webp" width="250" height="250">
+      <img class="slide" src="fbb03a91-ec1a-4b3f-86ca-8f63b708d1b6.jpg" width="250" height="250">
+      <img class="slide" src="f6685e13-72a0-4d60-a1b2-d3035c6b5e85.jpg" width="250" height="250">
+      <img class="slide" src="f9c705a9-2c91-4edc-9846-33cc396b815c.jpg" width="250" height="250">
+      <img class="slide" src="ee03af8b-6a6a-44ca-ad23-fae9227d712f.jpg" width="250" height="250">
+      <img class="slide" src="e3b6244d-8f38-407e-b6de-71341ce1cef4.jpg" width="250" height="250">
+      <img class="slide" src="e3b6244d-8f38-407e-b6de-71341ce1cef4.jpg" width="250" height="250">
+      <img class="slide" src="d505e75e-9ee2-4e1c-bf3d-aec22bb4d584.jpg" width="250" height="250">
+      <img class="slide" src="d8e52df4-fabc-40b5-8a64-583700246522.jpg" width="250" height="250">
+      <var><img class="slide" src="a6d2d06a-ea0c-4650-8775-57f83077e83e.jpg" width="250" height="250">
+      <img class="slide" src="1769330836981 copy.jpg" width="250" height="250">
+    <img class="slide" src="75291416-f22c-410d-b47a-e760a5714674.jpg" width="250" height="250">
+    <img class="slide" src="29593874-14de-40a5-afc7-eed05f8c286d.jpg" width="250" height="250">
+    <img class="slide" src="6726050a-6cf9-4e4d-b039-a3283fb30dc0.jpg" width="250" height="250">
+    <img class="slide" src="2687517a-0869-4bf9-a141-e30c5f42b660.jpg" width="250" height="250">
+    <img class="slide" src="2514120e-2e14-464a-9a27-11dc09e0d581.jpg" width="250" height="250">
+    <img class="slide" src="8409afc6-249f-4933-8a27-ece766e414af.jpg" width="250" height="250">
+    <img class="slide" src="6894fbae-d227-4599-a692-2844725ef010.jpg" width="250" height="250">
+    <img class="slide" src="6014c9b3-49f6-4e15-96bc-22e2a4be4ca9.jpg" width="250" height="250">
+    <img class="slide" src="5808d385-fcd1-4253-b915-afaf297c9755.jpg" width="250" height="250">
+    <img class="slide" src="1455dfca-bf67-4391-8ec5-465e5d7a51b3.jpg" width="250" height="250">
+    <img class="slide" src="01035be2-e84d-4024-808d-82493799cff1.jpg" width="250" height="250">
+    <img class="slide" src="897e303f-4d59-41c6-8b69-4f32462aad21.jpg" width="250" height="250">
+    <img class="slide" src="97cd5183-1516-48e7-b938-d981326a4d8d.jpg" width="250" height="250">
+    <img class="slide" src="89a28feb-b0aa-4d29-8828-cbe00eb2b97e.jpg" width="250" height="250">
+    <img class="slide" src="9e49f4df-4328-4930-9cae-cbd244d67e0b.jpg" width="250" height="250">
+    <img class="slide" src="8ac36716-78da-4857-ab30-528ba2e66cee.jpg" width="250" height="250">
+    <img class="slide" src="006ad2dc-09bd-4d5c-9e95-4cf31b4acf04.jpg" width="250" height="250">
+    <img class="slide" src="5e44edb5-9ea7-4de9-a313-90b2a5e9a622.jpg" width="250" height="250">
+    <img class="slide" src="2dd9eb26-c0b0-48b1-9a9d-4950aa0c32c2.jpg" width="250" height="250">
+    <img class="slide" src="1aeafeab-5c82-4bf1-bd35-447ed945e2ba.jpg" width="250" height="250">
+    <img class="slide" src="2.jpg" width="250" height="250">
+    <img class="slide" src="3.jpg" width="250" height="250">
+    <img class="slide" src="4.jpg" width="250" height="250">
+    <img class="slide" src="5.jpg" width="250" height="250">
+    <img class="slide" src="a.jpg" width="250" height="250">
+    <img class="slide" src="b.jpg" width="250" height="250">
+    <img class="slide" src="c.jpg" width="250" height="250">
+    <img class="slide" src="d.jpg" width="250" height="250">
+    <img class="slide" src="f.jpg" width="250" height="250">
+    <img class="slide" src="g.jpg" width="250" height="250">
+    <img class="slide" src="h.jpg" width="250" height="250">
+    <img class="slide" src="i.jpg" width="250" height="250">
+    <img class="slide" src="j.jpg" width="250" height="250">
+    
+    
+  
+
+  </var>
+    </div>
+
+    <div id="messageBox">
+      <p style="color: #ff9af2;">
+        Hi chamiee happy valentine's po 💖<br><br>
+        mag inoa sako karun aypag buot karun ra gani piro ang tanong karun ra ba gid ko nag inoa? cguro para sa imoha taga adlaw guro aiy HAHAHA
+        wait sa na speechless pang gwapo mubuon nalang nako ni kay akong brain dle na mo function patabang kaha kong chat gpt no? HAHHAH basta mao nato
+        amping ara pirme ayna pa cge og pa stress ara duha nya tang ma buang ani kaso murag imposible kaayo na dle ka ma stress kay sa akong typing palang daan na pirme typo stress naka pirme ambot nalang
+        btw sorry diay atong tuesday sa gabi wala ko ka reply may problema ra gid ko ato sorry piro i know wala man sad ko nimo ma ma mis kaya okay ra dle sako mag piniling karun cornyhan napod nya ka tas ana ko na mag english tako ani nya dle nalang basi ma wrong grammar og spelling napod nya mo labas napod imong inner self na pagka dictionary HAHAHAH
+        daghan pa inta ko og i butang ari kaso basi kapoyan nakag basa man nya nalimot na sd kos uban hahahha
+        basta  amping nalang ara kanunay chamie ayna cge og pabaya sa kaun ara salig lang walay masuko og dle cy mo kaon ay sabagay wala pa man kay bb mao nang wala pay masuko tas about sa imong tulog cge nakag piraw2 oiy stress baya kayka pirme sa acads kaya dapat pod na mo bawi kag tulog oiy para fresh pirme so tama tani basi na bagot nakag basa ari hahaha abi nimo og confession sulod ani no? hahhahah assuming
+        cge i'll be serious na sa akong fellings actually waay pod ko kasabut cge ani nalang no words can describe how much i like you! luh!!!!! kalain rag ga drama hahhahah
+        mao nato happy valentine's chamieeee 
+
+      </p>
+    </div>
+  </div>
+
+  <audio id="loveSong" controls>
+    <source src="Palagi - TJ Monterde (Lyric Video)  @dhorynmarimon_1770032259805.m4a">
+  </audio>
+
+</div>
 
 <script>
 const noBtn = document.getElementById("noBtn");
 const card = document.getElementById("question");
+const result = document.getElementById("result");
+const moon = document.getElementById("moon");
+const song = document.getElementById("loveSong");
+
+let heartInterval = null;
 
 noBtn.addEventListener("mouseenter", () => {
   const maxX = card.clientWidth - noBtn.offsetWidth;
@@ -149,47 +281,63 @@ noBtn.addEventListener("mouseenter", () => {
   noBtn.style.top = Math.random() * maxY + "px";
 });
 
-/* Heart Rain */
 function createHeart() {
   const heart = document.createElement("div");
   heart.className = "heart";
-  heart.innerHTML = "💖";
+  heart.textContent = "💖";
   heart.style.left = Math.random() * 100 + "vw";
-  heart.style.animationDuration = (2 + Math.random() * 3) + "s";
+  heart.style.animationDuration = 2 + Math.random() * 3 + "s";
   document.body.appendChild(heart);
   setTimeout(() => heart.remove(), 5000);
 }
 
-/* Stars Creation */
 function createStars(count) {
   for (let i = 0; i < count; i++) {
     const star = document.createElement("div");
     star.className = "star";
-    star.style.top = Math.random() * window.innerHeight + "px";
-    star.style.left = Math.random() * window.innerWidth + "px";
-    star.style.width = Math.random() * 2 + 1 + "px";
-    star.style.height = star.style.width;
+    const size = Math.random() * 2 + 1;
+    star.style.width = size + "px";
+    star.style.height = size + "px";
+    star.style.top = Math.random() * innerHeight + "px";
+    star.style.left = Math.random() * innerWidth + "px";
     star.style.opacity = Math.random();
     document.body.appendChild(star);
   }
 }
 
 function yesClick() {
-  document.getElementById("question").style.display = "none";
-  document.getElementById("result").style.display = "block";
-  document.getElementById("loveSong").play();
+  card.style.display = "none";
+  result.style.display = "block";
+  song.style.display = "block";
+  song.play();
 
-  // Change background to night
   document.body.style.background = "#0b0c2a";
-  
-  // Show moon
-  document.getElementById("moon").style.display = "block";
+  moon.style.display = "block";
 
-  // Create stars
-  createStars(100);
+  createStars(120);
 
-  // Start heart rain
-  setInterval(createHeart, 300);
+  if (!heartInterval) {
+    heartInterval = setInterval(createHeart, 300);
+  }
+}
+
+// goToPage3 now also starts the slideshow
+function goToPage3() {
+  document.getElementById("page2").style.display = "none";
+  document.getElementById("page3").style.display = "block";
+  startSlideshow();
+}
+
+// Page 3 slideshow only
+let slideIndex = 0;
+function startSlideshow() {
+  const slides = document.querySelectorAll("#page3 .slide");
+
+  setInterval(() => {
+    slides[slideIndex].classList.remove("active");
+    slideIndex = (slideIndex + 1) % slides.length;
+    slides[slideIndex].classList.add("active");
+  }, 2500);
 }
 </script>
 
