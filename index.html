@@ -13,11 +13,11 @@
        page7.jpg
        page8.jpg
   4. Open this HTML file in your browser — each photo will appear on its matching page.
-
+ 
   Using .png or .jpeg instead of .jpg?
   Find the matching <img src="photos/pageN.jpg" ...> line below (search for "photos/page")
   and change the file extension to match your image, e.g. src="photos/page1.png"
-
+ 
   Folder layout should look like:
     your-folder/
       happy-birthday-card.html
@@ -60,7 +60,7 @@
   }
   .page.active{opacity:1; transform:translateX(0) scale(1); pointer-events:auto;}
   .page.leaving{transform:translateX(-40px) scale(.98);}
-
+ 
   .eyebrow{
     font-family:'Fredoka',sans-serif; letter-spacing:.18em; font-size:13px;
     text-transform:uppercase; opacity:.75; margin-bottom:6px; z-index:2;
@@ -70,21 +70,19 @@
     margin:0 0 18px; z-index:2; line-height:1.1;
   }
   .scene{position:absolute; inset:0; z-index:0;}
-
+ 
   .frame-wrap{ z-index:2; display:flex; flex-direction:column; align-items:center; gap:14px; max-width:480px; width:100%; }
   .photo-frame{
     width:280px; height:280px; border-radius:18px; position:relative;
     display:flex; align-items:center; justify-content:center; overflow:hidden;
     background:rgba(255,255,255,.55); border:3px dashed rgba(0,0,0,.25);
-    box-shadow:0 10px 30px rgba(0,0,0,.12);
   }
   .photo-frame img{width:100%; height:100%; object-fit:cover; display:none;}
-  .photo-frame.has-img{border-style:solid;}
   .photo-frame.has-img img{display:block;}
   .photo-frame.has-img .placeholder{display:none;}
   .placeholder{display:flex; flex-direction:column; align-items:center; gap:8px; color:var(--ink); opacity:.65; font-family:'Quicksand',sans-serif; font-size:14px; padding:0 16px;}
   .placeholder svg{width:42px; height:42px;}
-
+ 
   textarea.message{
     width:100%; min-height:76px; resize:none; border:none; border-radius:14px;
     padding:14px 16px; font-family:'Quicksand',sans-serif; font-weight:500; font-size:16px; line-height:1.45;
@@ -92,7 +90,7 @@
     outline:none; box-shadow:0 2px 10px rgba(0,0,0,.08);
   }
   textarea.message::placeholder{color:rgba(58,46,42,.45); font-family:'Quicksand',sans-serif; font-size:14px;}
-
+ 
   /* ---- nav ---- */
   .nav-btn{
     position:fixed; top:50%; transform:translateY(-50%); z-index:30;
@@ -104,12 +102,7 @@
   .nav-btn:hover{transform:translateY(-50%) scale(1.08); background:rgba(20,14,14,.8);}
   .nav-btn:disabled{opacity:0; pointer-events:none;}
   #prevBtn{left:14px;} #nextBtn{right:14px;}
-
-  /* ---- progress dots ---- */
-  .dots{position:fixed; bottom:18px; left:50%; transform:translateX(-50%); z-index:25; display:flex; gap:7px;}
-  .dots span{width:7px; height:7px; border-radius:50%; background:rgba(255,255,255,.35); transition:background .3s, transform .3s;}
-  .dots span.on{background:#fff; transform:scale(1.25);}
-
+ 
   /* ---- music bar (right side panel, upper area so it never overlaps the nav arrows) ---- */
   .music-bar{
     position:fixed; top:56px; right:16px; z-index:20;
@@ -121,61 +114,57 @@
   .music-bar button{
     background:rgba(255,255,255,.15); border:none; color:#fff; border-radius:50%;
     width:34px; height:34px; flex:none; cursor:pointer; font-size:15px; display:flex;
-    align-items:center; justify-content:center; transition:background .15s, transform .15s;
+    align-items:center; justify-content:center; transition:background .15s;
   }
   .music-bar button:hover{background:rgba(255,255,255,.3);}
-  .music-bar button.spin{animation:spinSlow 6s linear infinite;}
-  @keyframes spinSlow{ to{ transform:rotate(360deg); } }
   .music-bar .track-name{text-align:center; font-size:10.5px; line-height:1.3; opacity:.85; max-width:56px;}
   .vol-wrap{width:70px; height:18px; display:flex; align-items:center; justify-content:center; transform:rotate(-90deg);}
   .vol-wrap input[type=range]{width:70px;}
-
+ 
   @media (max-width:760px){
     .music-bar{top:auto; bottom:14px; right:14px; flex-direction:row; width:auto; padding:10px 12px;}
     .music-bar .track-name{max-width:120px; text-align:left;}
     .vol-wrap{transform:none; width:64px; height:auto;}
     .vol-wrap input[type=range]{width:64px;}
-    .dots{bottom:auto; top:14px; left:14px; transform:none;}
   }
-
+ 
   /* page counter top */
   .counter{position:fixed; top:14px; right:18px; z-index:20; color:#fff; font-family:'Fredoka',sans-serif; font-size:13px; opacity:.8; background:rgba(0,0,0,.25); padding:4px 12px; border-radius:999px;}
-  @media (max-width:760px){ .counter{display:none;} }
-
+ 
   /* ============== THEME SCENES ============== */
   /* PAGE 1 - Balloons */
   .p1{background:linear-gradient(180deg,var(--p1-b),var(--p1-a));}
   .balloon{position:absolute; bottom:-120px; border-radius:50% 50% 50% 50%/55% 55% 45% 45%; animation:rise linear infinite; opacity:.9;}
   .balloon::after{content:'';position:absolute; bottom:-22px; left:50%; width:1px; height:24px; background:rgba(0,0,0,.25); transform:translateX(-50%);}
   @keyframes rise{ to{ transform:translateY(-130vh) rotate(8deg); } }
-
+ 
   /* PAGE 2 - Confetti */
   .p2{background:linear-gradient(160deg,var(--p2-b),var(--p2-a));}
   .confetti{position:absolute; top:-5%; width:10px; height:16px; opacity:.9; animation:fall linear infinite;}
   @keyframes fall{ to{ transform:translateY(115vh) rotate(360deg); } }
-
+ 
   /* PAGE 3 - Starry night */
   .p3{background:radial-gradient(circle at 50% 20%, var(--p3-b), var(--p3-a));} .p3 h1,.p3 .eyebrow{color:#FBF4EC;}
   .star{position:absolute; background:#fff; border-radius:50%; animation:twinkle ease-in-out infinite;}
   @keyframes twinkle{0%,100%{opacity:.25;} 50%{opacity:1;}}
   .moon{position:absolute; top:36px; right:14%; width:54px; height:54px; border-radius:50%; background:#F4ECD8; box-shadow:0 0 40px 10px rgba(244,236,216,.4);}
-
+ 
   /* PAGE 4 - Garden */
   .p4{background:linear-gradient(180deg,var(--p4-b),var(--p4-a));}
   .petal{position:absolute; border-radius:50% 0 50% 50%; opacity:.85; animation:drift linear infinite;}
   @keyframes drift{ to{ transform:translate(-30px,115vh) rotate(200deg); } }
-
+ 
   /* PAGE 5 - Disco */
   .p5{background:linear-gradient(180deg,var(--p5-b),var(--p5-a));} .p5 h1,.p5 .eyebrow{color:#FFF3D6;}
   .ray{position:absolute; top:0; left:50%; width:2px; height:120%; transform-origin:top center; background:linear-gradient(180deg, rgba(255,255,255,.18), transparent); animation:spin linear infinite;}
   @keyframes spin{ to{ transform:translateX(-50%) rotate(360deg); } }
   .disco-ball{position:absolute; top:18px; left:50%; transform:translateX(-50%); width:46px; height:46px; border-radius:50%;
     background:repeating-linear-gradient(45deg, #cfd8e3 0 6px, #9fb0c2 6px 12px); box-shadow:0 4px 16px rgba(0,0,0,.4);}
-
+ 
   /* PAGE 6 - Polaroid scrapbook */
   .p6{background:linear-gradient(180deg,var(--p6-b),var(--p6-a));}
   .tape{position:absolute; width:70px; height:24px; background:rgba(255,255,255,.55); opacity:.8; box-shadow:0 1px 3px rgba(0,0,0,.15);}
-
+ 
   /* PAGE 7 - Fireworks */
   .p7{background:radial-gradient(circle at 50% 30%, var(--p7-b), var(--p7-a));} .p7 h1,.p7 .eyebrow{color:#FBF4EC;}
   .fw{position:absolute; border-radius:50%; box-shadow:
@@ -185,214 +174,393 @@
     70%{ box-shadow:0 0 0 70px transparent; opacity:0; transform:scale(1);}
     100%{ opacity:0; }
   }
-
+ 
   /* PAGE 8 - Cake finale */
   .p8{background:linear-gradient(180deg,var(--p8-b),var(--p8-a));}
   .flame{position:absolute; width:6px; height:12px; background:#FFB23E; border-radius:50% 50% 50% 0; filter:blur(.3px); animation:flicker .6s ease-in-out infinite alternate;}
   @keyframes flicker{ from{transform:scale(1) rotate(-2deg);} to{transform:scale(1.15) rotate(2deg);} }
-
+ 
   .signature{font-family:'Quicksand',sans-serif; font-weight:600; font-size:18px; margin-top:6px; opacity:.85; z-index:2;}
-
+ 
   @media (prefers-reduced-motion: reduce){
-    .balloon,.confetti,.star,.petal,.ray,.fw,.flame,.music-bar button.spin{animation:none !important;}
+    .balloon,.confetti,.star,.petal,.ray,.fw,.flame{animation:none !important;}
   }
   @media (max-width:480px){
     .photo-frame{width:230px; height:230px;}
     .music-bar{font-size:12px;}
   }
+ 
+  /* ============== COVER PAGE ============== */
+  .p0{background:linear-gradient(160deg,#FFD9E8,#FFE3B0 55%,#F4ECD8); color:var(--ink); justify-content:center; padding:48px 24px;}
+  .cover{z-index:2; display:flex; flex-direction:column; align-items:center; gap:10px; max-width:460px;}
+  .gift{font-size:72px; animation:bob 2s ease-in-out infinite;}
+  @keyframes bob{0%,100%{transform:translateY(0) rotate(-4deg);}50%{transform:translateY(-12px) rotate(4deg);}}
+  .cover-text{font-weight:600; font-size:17px; line-height:1.5; margin:0 0 14px; opacity:.85;}
+  .open-btn{
+    font-family:'Fredoka',sans-serif; font-weight:600; font-size:18px; color:#fff; cursor:pointer;
+    border:none; border-radius:999px; padding:16px 30px;
+    background:linear-gradient(135deg,#FF6F91,#FF9671); box-shadow:0 8px 24px rgba(255,111,145,.45);
+    animation:pulse 1.6s ease-in-out infinite; transition:transform .15s ease;
+  }
+  .open-btn:hover{transform:scale(1.07);}
+  @keyframes pulse{0%,100%{box-shadow:0 8px 24px rgba(255,111,145,.45);}50%{box-shadow:0 8px 36px rgba(255,111,145,.85);}}
+  .heart{position:absolute; bottom:-40px; animation:rise linear infinite; opacity:.8;}
+  @media (prefers-reduced-motion: reduce){ .gift,.open-btn,.heart{animation:none !important;} }
+ 
+  /* ============== NEW PAGES 9-14 ============== */
+  /* PAGE 9 - Golden hour */
+  .p9{background:linear-gradient(180deg,#FFB88C,#FFD9A8 55%,#FFF1D6);}
+  .sun{position:absolute; bottom:14%; left:50%; width:140px; height:140px; margin-left:-70px; border-radius:50%;
+    background:radial-gradient(circle,#FFF3B0,#FFB347); box-shadow:0 0 80px 30px rgba(255,179,71,.55); animation:glow 4s ease-in-out infinite alternate;}
+  @keyframes glow{ to{ box-shadow:0 0 110px 45px rgba(255,179,71,.85); } }
+  .spark{position:absolute; width:6px; height:6px; border-radius:50%; background:#FFF8D6; box-shadow:0 0 8px 2px rgba(255,214,120,.8); animation:twinkle ease-in-out infinite;}
+ 
+  /* PAGE 10 - Ocean bubbles */
+  .p10{background:linear-gradient(180deg,#D8F3FF,#7EC8E3);}
+  .bubble{position:absolute; bottom:-60px; border-radius:50%; border:2px solid rgba(255,255,255,.75); background:rgba(255,255,255,.25); animation:bubbleUp linear infinite;}
+  @keyframes bubbleUp{ to{ transform:translate(20px,-125vh); } }
+ 
+  /* PAGE 11 - Sunny sky */
+  .p11{background:linear-gradient(180deg,#8FD3FF,#E6F6FF);}
+  .cloud{position:absolute; left:0; background:#fff; border-radius:999px; opacity:.92; animation:cloudMove linear infinite;}
+  .cloud::before,.cloud::after{content:''; position:absolute; background:#fff; border-radius:50%;}
+  .cloud::before{width:50%; height:150%; top:-65%; left:14%;}
+  .cloud::after{width:38%; height:115%; top:-40%; right:12%;}
+  @keyframes cloudMove{ from{ transform:translateX(-30vw);} to{ transform:translateX(130vw);} }
+ 
+  /* PAGE 12 - Fireflies */
+  .p12{background:radial-gradient(circle at 50% 85%,#2F4A33,#0E1A14);} .p12 h1,.p12 .eyebrow{color:#FBF4EC;}
+  .firefly{position:absolute; width:6px; height:6px; border-radius:50%; background:#F9F871; box-shadow:0 0 12px 4px rgba(249,248,113,.7);}
+  @keyframes floaty{ from{ transform:translate(0,0);} to{ transform:translate(34px,-46px);} }
+ 
+  /* PAGE 13 - Love notes */
+  .p13{background:linear-gradient(160deg,#FFE0EC,#FFB3C9);}
+ 
+  /* PAGE 14 - Shooting stars */
+  .p14{background:radial-gradient(circle at 50% 30%,#4B1D6B,#12082A);} .p14 h1,.p14 .eyebrow{color:#FBF4EC;}
+  .shoot{position:absolute; width:90px; height:2px; background:linear-gradient(90deg,#fff,transparent); opacity:0; animation:shoot linear infinite;}
+  @keyframes shoot{ 0%{ transform:translate(0,0) rotate(-30deg); opacity:1;} 100%{ transform:translate(-300px,173px) rotate(-30deg); opacity:0;} }
+ 
+  @media (prefers-reduced-motion: reduce){
+    .sun,.spark,.bubble,.cloud,.firefly,.shoot{animation:none !important;}
+  }
 </style>
 </head>
 <body>
-
+ 
 <div class="counter" id="counter">1 / 8</div>
-
+ 
 <div class="deck" id="deck">
-
+ 
+  <!-- PAGE 0 : Cover -->
+  <section class="page p0" data-index="-1">
+    <div class="scene" id="scene0"></div>
+    <div class="cover">
+      <div class="gift">🎁</div>
+      <div class="eyebrow">A little surprise for you</div>
+      <h1 class="headline">Happy Birthday,CHAMIEEEE GURANG NA YAN CYA! 💖</h1>
+      <p class="cover-text">I made something just for you... are you ready?</p>
+      <button class="open-btn" id="openBtn">Click it to go to the next page ✨</button>
+    </div>
+  </section>
+ 
   <!-- PAGE 1 : Balloons -->
   <section class="page p1" data-index="0">
     <div class="scene" id="scene1"></div>
-    <div class="eyebrow">Page 1 of 8 · Balloons Rising</div>
-    <h1 class="headline">Happy Birthday babiii! 🎈</h1>
+    <div class="eyebrow">Page 1 of 14 · Balloons Rising</div>
+    <h1 class="headline">BWAHAHAHAHHA 🎈</h1>
     <div class="frame-wrap">
       <div class="photo-frame" data-slot="1">
-        <img src="b882f148-b99b-45d4-82a6-172379600073 (1).jfif" alt="your photo" onerror="this.style.display='none'; this.parentElement.classList.remove('has-img');" onload="this.parentElement.classList.add('has-img');">
+        <img src="1.jfif" alt="your photo" onerror="this.style.display='none'; this.parentElement.classList.remove('has-img');" onload="this.parentElement.classList.add('has-img');">
         <div class="placeholder">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10.5" r="1.5"/><path d="M21 16l-5-5-4 4-2-2-3 3"/></svg>
           no photo yet
         </div>
       </div>
-      <textarea class="message" data-slot="1" placeholder="Write a little message for this page...">oh pak sino ka dyan ha? gandang ganda naman ng wallpaper ko te panis ka boii hahhaha</textarea>
+      <textarea class="message" data-slot="1" placeholder="Write a little message for this page...">Huy imoha mang bd piro nganung akong nawong ang nag una oiy ka uwaw HAHAHAH piro g tuyo ra man gid nako na kay kibaw man ko na g mingaw nakas akoa bwahahhahaha</textarea>
     </div>
   </section>
-
+ 
   <!-- PAGE 2 : Confetti -->
   <section class="page p2" data-index="1">
     <div class="scene" id="scene2"></div>
-    <div class="eyebrow">Page 2 of 8 · Confetti Burst</div>
-    <h1 class="headline">lasing yarn but i like it </h1>
+    <div class="eyebrow">Page 2 of 14 · Confetti Burst</div>
+    <h1 class="headline">THE DUO🎉</h1>
     <div class="frame-wrap">
       <div class="photo-frame" data-slot="2">
-        <img src="16d1ae57-5769-488a-9e09-a3d512014e48.jfif" alt="your photo" onerror="this.style.display='none'; this.parentElement.classList.remove('has-img');" onload="this.parentElement.classList.add('has-img');">
+        <img src="2.jfif" alt="your photo" onerror="this.style.display='none'; this.parentElement.classList.remove('has-img');" onload="this.parentElement.classList.add('has-img');">
         <div class="placeholder">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10.5" r="1.5"/><path d="M21 16l-5-5-4 4-2-2-3 3"/></svg>
           no photo yet
         </div>
       </div>
-      <textarea class="message" data-slot="2" placeholder="Write a little message for this page...">hi babi remember mo pa ba to ha? ito yung nalasing ka oh tapos tinatanong moko kung love ba daw kita HAHAHAHHA Actually tuwang tuwa ako nung time na yun at the same time kinikilig nakaka miss din yung kakulitan mo lagi eh no bwhahahahaha at saka ang sagut ko dun sa tanong mo babii is oo love na love ko po ikaw babii kahit na lagi kitang inaaway wala eh kinareer ko na ata yung pagiging pala away sayu hahaahhahaha.</textarea>
+      <textarea class="message" data-slot="2" placeholder="Write a little message for this page...">magsuon mo sa inyung past life chamiee ano same kaymo aiy murag may mga singko bwahhahahaha</textarea>
     </div>
   </section>
-
+ 
   <!-- PAGE 3 : Starry -->
   <section class="page p3" data-index="2">
     <div class="scene" id="scene3"><div class="moon"></div></div>
-    <div class="eyebrow">Page 3 of 8 · Starry Wish</div>
-    <h1 class="headline">accck and ganda mo babiii✨</h1>
+    <div class="eyebrow">Page 3 of 14 · Starry Wish</div>
+    <h1 class="headline">KYUT SUPPER✨</h1>
     <div class="frame-wrap">
       <div class="photo-frame" data-slot="3">
-        <img src="c142263d-90bf-4017-a2a3-b97d555f3966 (2).jfif" alt="your photo" onerror="this.style.display='none'; this.parentElement.classList.remove('has-img');" onload="this.parentElement.classList.add('has-img');">
+        <img src="3.jfif" alt="your photo" onerror="this.style.display='none'; this.parentElement.classList.remove('has-img');" onload="this.parentElement.classList.add('has-img');">
         <div class="placeholder">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10.5" r="1.5"/><path d="M21 16l-5-5-4 4-2-2-3 3"/></svg>
           no photo yet
         </div>
       </div>
-      <textarea class="message" data-slot="3" placeholder="Write a little message for this page...">ito yun babii oh yung firts picture  na senend mo tapos nagpa myday ka sakin te kasi nagtatampo ako nun kasi my myday ka sa fb tapos dun sa tiktok wala kaya ayun nagpa myday ka sakin, wah gandang ganda ako nun sa myday ko te pwede ba kita i myday ulit ha?asking permission lang po baka magalit ka or may magalit saka diba nagseselos ka sa mga kaibigan ko? tapos nagagandahan pa kaya halika nga babii myday kita ipang yayabang ko lang kung gaano ka po kaganda babii ko iwan ko nga bakit kapa napapangitan sa ganda mo te  bakit kapa insecure sa gand mong yan hindi ka pa ba karmahin ha? hhahhaha </textarea>
+      <textarea class="message" data-slot="3" placeholder="Write a little message for this page...">okay speechless nako ari na part cge na chamiee kyut na lagi ka wala nay mo supak kay ara palang grabi kay ganda san smile mo naol HAHAHHA</textarea>
     </div>
   </section>
-
+ 
   <!-- PAGE 4 : Garden -->
   <section class="page p4" data-index="3">
     <div class="scene" id="scene4"></div>
-    <div class="eyebrow">Page 4 of 8 · Garden Bloom</div>
-    <h1 class="headline">ito maasar ka muna sakin kasi sinali ko to</h1>
+    <div class="eyebrow">Page 4 of 14 · Garden Bloom</div>
+    <h1 class="headline">You Keep Blooming 🌸</h1>
     <div class="frame-wrap">
       <div class="photo-frame" data-slot="4">
-        <img src="e8067790-2adc-4a65-b5b9-355620504a06.jfif" alt="your photo" onerror="this.style.display='none'; this.parentElement.classList.remove('has-img');" onload="this.parentElement.classList.add('has-img');">
+        <img src="4.jfif" alt="your photo" onerror="this.style.display='none'; this.parentElement.classList.remove('has-img');" onload="this.parentElement.classList.add('has-img');">
         <div class="placeholder">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10.5" r="1.5"/><path d="M21 16l-5-5-4 4-2-2-3 3"/></svg>
           no photo yet
         </div>
       </div>
-      <textarea class="message" data-slot="4" placeholder="Write a little message for this page...">Eh ito te tanda mo pa ba to ha? ito yung inis na inis ka o kasi first time mo daw ma chocolate sa lunox mo, diba ang kyut mo dito lalo na kapag naiinis ka kasi daw hindi kana marunong gumamit ng hero na yun wah kawawa ka naman babii piro okay lang yan tatawanan nalang kita hahhahaah</textarea>
+      <textarea class="message" data-slot="4" placeholder="Write a little message for this page...">nanambok yan cya ara sa picture aiy haha ka kyut sa aping</textarea>
     </div>
   </section>
-
+ 
   <!-- PAGE 5 : Disco -->
   <section class="page p5" data-index="4">
     <div class="scene" id="scene5"><div class="disco-ball"></div></div>
-    <div class="eyebrow">Page 5 of 8 · Disco Sparkle</div>
+    <div class="eyebrow">Page 5 of 14 · Disco Sparkle</div>
     <h1 class="headline">the ideal person you want</h1>
     <div class="frame-wrap">
       <div class="photo-frame" data-slot="5">
-        <img src="7a08bda8-608c-4da1-bf95-75b33ee604c7.jfif" alt="your photo" onerror="this.style.display='none'; this.parentElement.classList.remove('has-img');" onload="this.parentElement.classList.add('has-img');">
+        <img src="12.jpg" alt="your photo" onerror="this.style.display='none'; this.parentElement.classList.remove('has-img');" onload="this.parentElement.classList.add('has-img');">
         <div class="placeholder">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10.5" r="1.5"/><path d="M21 16l-5-5-4 4-2-2-3 3"/></svg>
           no photo yet
         </div>
       </div>
-      <textarea class="message" data-slot="5" placeholder="Write a little message for this page...">ito ba yung gusto mo sa isang lalaki te ha? wag ka po mag alala maitim na akong yung katabaan ko nalang yung kulang saka ikaw ha mahihilig ka pala sa maitim na mataba huh pwess you choose the right person kasi ganun  ako hahaha</textarea>
+      <textarea class="message" data-slot="5" placeholder="Write a little message for this page...">your future husband dzai BWAHAHAHA congrats daan nimo cham libreha nya ko ha og matinuod hahahaha</textarea>
     </div>
   </section>
-
+ 
   <!-- PAGE 6 : Polaroid -->
   <section class="page p6" data-index="5">
     <div class="scene" id="scene6"></div>
-    <div class="eyebrow">Page 6 of 8 · Polaroid Memories</div>
-    <h1 class="headline">selos yarn sowwey po babiii </h1>
+    <div class="eyebrow">Page 6 of 14 · Polaroid Memories</div>
+    <h1 class="headline">A Memory Worth Keeping 📸</h1>
     <div class="frame-wrap">
       <div class="photo-frame" data-slot="6" style="border-radius:4px; padding-bottom:34px;">
-        <img src="4dbc9fb4-d0cb-4264-aaf5-3b1c1ffc8208 (1).jfif" alt="your photo" onerror="this.style.display='none'; this.parentElement.classList.remove('has-img');" onload="this.parentElement.classList.add('has-img');">
+        <img src="6.jfif" alt="your photo" onerror="this.style.display='none'; this.parentElement.classList.remove('has-img');" onload="this.parentElement.classList.add('has-img');">
         <div class="placeholder">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10.5" r="1.5"/><path d="M21 16l-5-5-4 4-2-2-3 3"/></svg>
           no photo yet
         </div>
       </div>
-      <textarea class="message" data-slot="6" placeholder="Write a little message for this page..."> hi babiii remember mo pa to hah may 28 una natin na pag uusap dito sa fb tapos may arguments agad na nangyayari kasi hindi kita ma add saka sabi mo nun sa tiktok na add kita sa fb kasi isasali mo daw ako sa petpeeve mo kaso wala eh nag antay pa naman ako nun bwwhhahahw keso okay lang  andun din kasi yung pinagseselosan ko baka awayin ko pa un charr haahahhha nakita ko din cya sa ano mo family members sana all charr hindi ako nagseselos no wala nga ako karapatan eh hahahhah oh baka magalit kana naman dyan nag bibiro lang ako ha haahhaha babiiii sorry po talaga kung panay selos ako ha alam ko kasi sa sarili ko na madali lang ako palitan huhuhu apaka replaceable ko kasi babiii eh kaya sorry po talaga saka mga time na inaaway kita yung mga time na sinusukuan kita ito po ako nag hihingi ng pasensya sayu te sorry po talaga te huhuhu panay sabi ko na mahal na mahal kita babii kaso ganun yung lagi kung napaparamdam sau lagi nalang kita sinasaktan kaya sorry po talaga babiii ko basta mahal talaga kita babiii sa paraan na ako lang yung nakaka alam kaso yung pamamaraan ko parang mali at lagi akong napapa subra kaya sorry ha  </textarea>
+      <textarea class="message" data-slot="6" placeholder="Write a little message for this page...">shessh literal na memories na worth to keep kay ganda mo ara kag kay bata pa nya karun tigulang na bwahaahah btw happy birthday ulit cham dle nako mag sweet message oiy kataw an ra nimo imong uyab na bahala sa sweet message BWAHAHAH</textarea>
     </div>
   </section>
-
+ 
   <!-- PAGE 7 : Fireworks -->
   <section class="page p7" data-index="6">
     <div class="scene" id="scene7"></div>
-    <div class="eyebrow">Page 7 of 8 · Fireworks Finale</div>
-    <h1 class="headline">ssheshs ganda mo babiii</h1>
+    <div class="eyebrow">Page 7 of 14 · Fireworks Finale</div>
+    <h1 class="headline">You Want A Letchon? 🎆</h1>
     <div class="frame-wrap">
       <div class="photo-frame" data-slot="7">
-        <img src="5e61b819-7db1-4766-ab9b-606014489115.jfif" alt="your photo" onerror="this.style.display='none'; this.parentElement.classList.remove('has-img');" onload="this.parentElement.classList.add('has-img');">
+        <img src="7.jfif" alt="your photo" onerror="this.style.display='none'; this.parentElement.classList.remove('has-img');" onload="this.parentElement.classList.add('has-img');">
         <div class="placeholder">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10.5" r="1.5"/><path d="M21 16l-5-5-4 4-2-2-3 3"/></svg>
           no photo yet
         </div>
       </div>
-      <textarea class="message" data-slot="7" placeholder="Write a little message for this page...">Hi babiii happy happy birthday sayu look oh you really look so Gorgeous dito po acck i really like it charrr, baka sasabahin muna naman na minamanyak kita dito, paawat ka naman, hindi ba kasi pwedeng nagagandahan lang talaga ako ha? btw Happy2x Birthday! nga sayu iloveuso much po heheh love na love ko po ikaw babii ko, ha tatandaan mo po yan babii saka wish ko sayu is sana naman babii umabot pa tayu ng senior citizen para masaya kung hindi man tayu para sa isat isa pupunta nalang ako sa bahay nyo para itago yung gamot mo tayu sana magtagu taguan ng gamot eh kaso malabo talking stage palang wala na talaga hahahha btw sheshh ganda naman ng madam baby ko na to nakaka tanggal ng angas naman yan</textarea>
+      <textarea class="message" data-slot="7" placeholder="Write a little message for this page...">MAG LAWAY KA PLEASE BWAHAHAHAHAH</textarea>
     </div>
   </section>
-
+ 
   <!-- PAGE 8 : Cake finale -->
   <section class="page p8" data-index="7">
     <div class="scene" id="scene8"></div>
-    <div class="eyebrow">Page 8 of 8 · The Big Wish</div>
+    <div class="eyebrow">Page 8 of 14 · The Big Wish</div>
     <h1 class="headline">Happy Birthday, Always 🎂</h1>
     <div class="frame-wrap">
       <div class="photo-frame" data-slot="8">
-        <img src="Screenshot_26-6-2026_4212_www.facebook.com.jpeg" alt="your photo" onerror="this.style.display='none'; this.parentElement.classList.remove('has-img');" onload="this.parentElement.classList.add('has-img');">
+        <img src="8.jfif" alt="your photo" onerror="this.style.display='none'; this.parentElement.classList.remove('has-img');" onload="this.parentElement.classList.add('has-img');">
         <div class="placeholder">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10.5" r="1.5"/><path d="M21 16l-5-5-4 4-2-2-3 3"/></svg>
           no photo yet
         </div>
       </div>
-      <textarea class="message" data-slot="8" placeholder="Write your final birthday message...">Hii babiiii! ❤️
-Happy na birthday mo pa, happy na birthday mo pa... charrr! 😂 Happy Birthday sa madam baby ko na 'yan! 🎉🎂💖
-
-Actually, wala gid kaayo koy maingon kay murag tanan gusto nako isulti mawala kung ikaw na ang hisgutan. 😭 Hahaha. Pero sige, mag-wish na lang ko para sa imo.
-
-I wish you a long, happy, and healthy life, babii, para ma-enjoy nimo ang imong life to the fullest. I pray nga ma-achieve nimo tanan nimong goals ug dreams, ug wishing you all the best in your future endeavors. May your future be filled with happiness, success, peace of mind, and countless blessings. ✨🤍
-
-Syempre, wish pud nako nga maabot ang panahon nga makita nimo ang taong para gyud sa imo—kanang mo-atiman nimo, mo-respeto sa imo, naa'y emotional intelligence, maminaw sa imo, ug kanang dili ka pasakitan. Kanang tawo nga iparamdam sa imo kung unsa ka ka-importante.
-
-Pero... since wala pa man siya... pwede ako sa? 😭👉👈 Hahaha, pasingit lang gud ko gamay.
-
-Babiii, pwede ba kitang ligawan? 🌹
-Dili ko mag-promise ug bisag unsa  piro i will try to do what i need to do para sa imoha but dle kaayo ko maka express ana sa imoha, Mas gusto unta nako nga ang actions na lang ang mopakita kung unsa ko ka-seryoso piro pirme nag una akong pride og ego piro i will try my best to disregard my feelings just for you babiii and I will do my best to treat you right, respect you, support you, and make you smile as much as I can.
-
-Pero babiii, ayaw lang sa pag-expect ug sobra sa akoa ha. Hahaha kibaw baya ka na Loko-loko ko usahay, sabaan, kulit, ug medyo buang. 😭 Pero usa ka butang ang sigurado,  piro may oag asa ba ko na mo manligaw sa imoha? diba nag ingon ka dati na dle ka mo sugot piro ana ka sa mga away nato na dle ba daw uso sa akoa ang take risk? kaya ito na babii mag tatake risk na ems but don't expect anything from me babii i can do some things but not all because I'm just a person with may flaws but just give me some chance and i show you how sincerely i am to you😘
-
-Ug kung unsa man ang imong mahimong decision, okay ra gyud nako. Dili tika pugson ug rerespetuhon nako na. Ang importante sa akoa kay nasulti nako ang tinuod nga gibati sa akong kasing-kasing.
-
-Happy Birthday once again, babii. 🥹❤️ Enjoy your special day, always take care of yourself, and thank you for being someone worth admiring. Whatever your answer is, I'm still wishing you nothing but happiness because you deserve it. 🤍🌹 actuatlly babii im not really good in expressing what i feel or what i want to say to you kaya pagpasensyahan mo na hahhaha</textarea>
-      <div class="signature">— with love</div>
+      <textarea class="message" data-slot="8" placeholder="Write your final birthday message...">Worth it inyung performance ani na time aiy dabest kaayo mga wowers bilib gud pati sir chengloy.</textarea>
+      <div class="signature">— miss u </div>
     </div>
   </section>
-
+ 
+  <!-- PAGE 9 : Golden Hour -->
+  <section class="page p9" data-index="8">
+    <div class="scene" id="scene9"><div class="sun"></div></div>
+    <div class="eyebrow">Page 9 of 14 · Golden Hour</div>
+    <h1 class="headline">Golden Moments 🌅</h1>
+    <div class="frame-wrap">
+      <div class="photo-frame" data-slot="9">
+        <img src="9.jfif" alt="your photo" onerror="this.style.display='none'; this.parentElement.classList.remove('has-img');" onload="this.parentElement.classList.add('has-img');">
+        <div class="placeholder">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10.5" r="1.5"/><path d="M21 16l-5-5-4 4-2-2-3 3"/></svg>
+          no photo yet
+        </div>
+      </div>
+      <textarea class="message" data-slot="9" placeholder="Write a little message for this page...">kung ikaw nice kaayo pg smile piro c charlon naluya og pangupya na sakpan nuon bwahahha</textarea>
+    </div>
+  </section>
+ 
+  <!-- PAGE 10 : Ocean Bubbles -->
+  <section class="page p10" data-index="9">
+    <div class="scene" id="scene10"></div>
+    <div class="eyebrow">Page 10 of 14 · Ocean Bubbles</div>
+    <h1 class="headline">Sea of Smiles 🌊</h1>
+    <div class="frame-wrap">
+      <div class="photo-frame" data-slot="10">
+        <img src="10.jfif" alt="your photo" onerror="this.style.display='none'; this.parentElement.classList.remove('has-img');" onload="this.parentElement.classList.add('has-img');">
+        <div class="placeholder">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10.5" r="1.5"/><path d="M21 16l-5-5-4 4-2-2-3 3"/></svg>
+          no photo yet
+        </div>
+      </div>
+      <textarea class="message" data-slot="10" placeholder="Write a little message for this page...">ngiting tagumpay </textarea>
+    </div>
+  </section>
+ 
+  <!-- PAGE 11 : Sky High -->
+  <section class="page p11" data-index="10">
+    <div class="scene" id="scene11"></div>
+    <div class="eyebrow">Page 11 of 14 · Sky High</div>
+    <h1 class="headline">Sunshine Days ☀️</h1>
+    <div class="frame-wrap">
+      <div class="photo-frame" data-slot="11">
+        <img src="13.jfif" alt="your photo" onerror="this.style.display='none'; this.parentElement.classList.remove('has-img');" onload="this.parentElement.classList.add('has-img');">
+        <div class="placeholder">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10.5" r="1.5"/><path d="M21 16l-5-5-4 4-2-2-3 3"/></svg>
+          no photo yet
+        </div>
+      </div>
+      <textarea class="message" data-slot="11" placeholder="Write a little message for this page...">OKAY NO COMMENT IKAW NA GWAPA YOT TAS FYI LANG HA WALA KO MASUYA MAYMAN KO OR SIR CHENGLOY, PAREHA RA ME GWAPO PIRO DLE KO SUYAON HAHHHA</textarea>
+    </div>
+  </section>
+ 
+  <!-- PAGE 12 : Fireflies -->
+  <section class="page p12" data-index="11">
+    <div class="scene" id="scene12"></div>
+    <div class="eyebrow">Page 12 of 14 · Fireflies</div>
+    <h1 class="headline"> WITH YOUR LOVE ATE🌙</h1>
+    <div class="frame-wrap">
+      <div class="photo-frame" data-slot="12">
+        <img src="14.jfif" alt="your photo" onerror="this.style.display='none'; this.parentElement.classList.remove('has-img');" onload="this.parentElement.classList.add('has-img');">
+        <div class="placeholder">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10.5" r="1.5"/><path d="M21 16l-5-5-4 4-2-2-3 3"/></svg>
+          no photo yet
+        </div>
+      </div>
+      <textarea class="message" data-slot="12" placeholder="Write a little message for this page...">HI Chamie sayang wala koy picture san whole family ninyo i apil tani kaya kani nalang c ate nimo bisag usahay kaaway nimo na piro deep inside concern kaymo sa usag usa i know na love kaayo nimo imong ate kaya g apil nako cya ari, bitaw oiy na hutdan ra gid ko og picture nimo bwahhhaahha</textarea>
+    </div>
+  </section>
+ 
+  <!-- PAGE 13 : Floating Hearts -->
+  <section class="page p13" data-index="12">
+    <div class="scene" id="scene13"></div>
+    <div class="eyebrow">Page 13 of 14 · Floating Hearts</div>
+    <h1 class="headline">Little Love Notes 💌</h1>
+    <div class="frame-wrap">
+      <div class="photo-frame" data-slot="13">
+        <img src="15.jfif" alt="your photo" onerror="this.style.display='none'; this.parentElement.classList.remove('has-img');" onload="this.parentElement.classList.add('has-img');">
+        <div class="placeholder">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10.5" r="1.5"/><path d="M21 16l-5-5-4 4-2-2-3 3"/></svg>
+          no photo yet
+        </div>
+      </div>
+      <textarea class="message" data-slot="13" placeholder="Write a little message for this page..."> no more drama no more sweet message no more ka artehan, but im just wanna greet you a happy happy birthday chamiee and more birrthday to come dle nako mag sweet message oiy dle bagay nako feel nako og mag sweet message ko mo gawas akong inner self, grabi akong kaba pirme kabaklaan basta happy birthday and enjoy your special day cham goodluck sa imong journey and keep safe always,labyah mwahhhhhh </textarea>
+    </div>
+  </section>
+ 
+  <!-- PAGE 14 : Shooting Stars -->
+  <section class="page p14" data-index="13">
+    <div class="scene" id="scene14"></div>
+    <div class="eyebrow">Page 14 of 14 · Shooting Stars</div>
+    <h1 class="headline">One More Wish 🌠</h1>
+    <div class="frame-wrap">
+      <div class="photo-frame" data-slot="14">
+        <img src="16.jfif" alt="your photo" onerror="this.style.display='none'; this.parentElement.classList.remove('has-img');" onload="this.parentElement.classList.add('has-img');">
+        <div class="placeholder">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10.5" r="1.5"/><path d="M21 16l-5-5-4 4-2-2-3 3"/></svg>
+          no photo yet
+        </div>
+      </div>
+      <textarea class="message" data-slot="14" placeholder="Write a little message for this page...">Hi birthday girl its your Mom right? sheesh mao diay gwapa ka cham may pinag manahan diay, wala ko mangayo og singko ha gwapa man gi ka no joke im seryos bwhahahaah btw musta na diay ka oiy basta cham ha umulan bumagyo or bisag naa nakay asawa or anak charrr basta atong streak ayaw kalimte librehon pa baya ko nimo og mag dugay na cya diba diba </textarea>
+    </div>
+  </section>
+ 
 </div>
-
+ 
 <button class="nav-btn" id="prevBtn" aria-label="Previous page">←</button>
 <button class="nav-btn" id="nextBtn" aria-label="Next page">→</button>
-<div class="dots" id="dots"></div>
-
+ 
 <div class="music-bar">
   <button id="playBtn" aria-label="Play music">▶</button>
-  <span class="track-name" id="trackName">Palagi — TJ Monterde</span>
+  <span class="track-name" id="trackName">Loading song…</span>
   <div class="vol-wrap">
     <input type="range" id="volRange" min="0" max="1" step="0.01" value="0.6">
   </div>
 </div>
-
+ 
 <!--
-  MUSIC
+  HOW TO ADD YOUR OWN MUSIC
   ==========================
-  This card plays "Palagi" by TJ Monterde automatically when you press play.
-  The song file is referenced below. If you ever want to swap it for a
-  different song, just change the src="..." path to point at your own
-  audio file (mp3, m4a, wav, or ogg all work).
+  1. In the SAME folder as this HTML file, create a folder named "music"
+  2. Put your song inside it and name it exactly:  song.mp3
+  3. Open this HTML file — it will play your song automatically.
+ 
+  Using a different file type, like .wav or .ogg?
+  Change the src below from "music/song.mp3" to e.g. "music/song.wav"
+ 
+  Folder layout should look like:
+    your-folder/
+      happy-birthday-card.html
+      music/
+        song.mp3
+      photos/
+        page1.jpg
+        ... etc
+ 
+  If no music/song.mp3 is found, a built-in chime plays instead automatically.
 -->
-<audio id="audioEl" loop preload="auto">
-  <source src="Palagi - TJ Monterde (Lyric Video)  @dhorynmarimon_1770032259805.m4a" type="audio/mp4">
+<audio id="audioEl" loop>
+  <source src="Palagi - TJ Monterde (Lyric Video)  @dhorynmarimon_1770032259805.m4a" type="audio/mpeg">
 </audio>
-
+ 
 <script>
 /* ---------------- decorative scene generation ---------------- */
 function rand(min,max){ return Math.random()*(max-min)+min; }
-
+ 
+// Page 0 — floating hearts (cover)
+(function(){
+  const scene=document.getElementById('scene0');
+  const hearts=['💖','💕','💗','🌸','✨'];
+  for(let i=0;i<16;i++){
+    const h=document.createElement('div');
+    h.className='heart';
+    h.textContent=hearts[i%hearts.length];
+    h.style.left=rand(2,94)+'%';
+    h.style.fontSize=rand(16,30)+'px';
+    h.style.animationDuration=rand(7,14)+'s';
+    h.style.animationDelay=rand(0,8)+'s';
+    scene.appendChild(h);
+  }
+})();
+ 
 // Page 1 — balloons
 (function(){
   const colors=['#FF6F91','#FFC75F','#845EC2','#00C9A7','#FF9671'];
@@ -409,7 +577,7 @@ function rand(min,max){ return Math.random()*(max-min)+min; }
     scene.appendChild(b);
   }
 })();
-
+ 
 // Page 2 — confetti
 (function(){
   const colors=['#FF6F91','#FFC75F','#845EC2','#00C9A7','#4D8076'];
@@ -425,7 +593,7 @@ function rand(min,max){ return Math.random()*(max-min)+min; }
     scene.appendChild(c);
   }
 })();
-
+ 
 // Page 3 — stars
 (function(){
   const scene=document.getElementById('scene3');
@@ -440,7 +608,7 @@ function rand(min,max){ return Math.random()*(max-min)+min; }
     scene.appendChild(s);
   }
 })();
-
+ 
 // Page 4 — petals
 (function(){
   const colors=['#F2A6B0','#E8C7DE','#FBE5C8','#C9DDB0'];
@@ -457,7 +625,7 @@ function rand(min,max){ return Math.random()*(max-min)+min; }
     scene.appendChild(p);
   }
 })();
-
+ 
 // Page 5 — disco rays
 (function(){
   const scene=document.getElementById('scene5');
@@ -470,7 +638,7 @@ function rand(min,max){ return Math.random()*(max-min)+min; }
     scene.appendChild(r);
   }
 })();
-
+ 
 // Page 6 — tape corners
 (function(){
   const scene=document.getElementById('scene6');
@@ -483,7 +651,7 @@ function rand(min,max){ return Math.random()*(max-min)+min; }
     scene.appendChild(tp);
   });
 })();
-
+ 
 // Page 7 — fireworks
 (function(){
   const colors=['#FF6F91','#FFC75F','#00C9A7','#845EC2','#F9F871'];
@@ -499,7 +667,7 @@ function rand(min,max){ return Math.random()*(max-min)+min; }
     scene.appendChild(f);
   }
 })();
-
+ 
 // Page 8 — cake silhouette + candles
 (function(){
   const scene=document.getElementById('scene8');
@@ -532,36 +700,73 @@ function rand(min,max){ return Math.random()*(max-min)+min; }
   // reposition relative to scene bottom properly
   scene.style.position='absolute'; scene.style.inset='0';
 })();
-
+ 
+/* ---------------- scenes for pages 9-14 ---------------- */
+function fill(id,count,cls,styler){
+  const scene=document.getElementById(id);
+  for(let i=0;i<count;i++){
+    const d=document.createElement('div');
+    d.className=cls; styler(d,i); scene.appendChild(d);
+  }
+}
+fill('scene9',30,'spark',d=>{
+  d.style.left=rand(0,100)+'%'; d.style.top=rand(0,75)+'%';
+  d.style.animationDuration=rand(1.5,4)+'s'; d.style.animationDelay=rand(0,3)+'s';
+});
+fill('scene10',20,'bubble',d=>{
+  const size=rand(10,38);
+  d.style.width=size+'px'; d.style.height=size+'px';
+  d.style.left=rand(0,98)+'%';
+  d.style.animationDuration=rand(6,13)+'s'; d.style.animationDelay=rand(0,8)+'s';
+});
+fill('scene11',7,'cloud',d=>{
+  const w=rand(90,170);
+  d.style.width=w+'px'; d.style.height=(w*0.35)+'px';
+  d.style.top=rand(4,60)+'%';
+  d.style.animationDuration=rand(25,45)+'s'; d.style.animationDelay=(-rand(0,30))+'s';
+});
+fill('scene12',26,'firefly',d=>{
+  d.style.left=rand(2,96)+'%'; d.style.top=rand(10,90)+'%';
+  d.style.animation='floaty '+rand(4,8)+'s ease-in-out '+(-rand(0,5))+'s infinite alternate, twinkle '+rand(1.5,3)+'s ease-in-out infinite';
+});
+fill('scene13',18,'heart',(d,i)=>{
+  const hs=['💖','💕','💗','💘','💝'];
+  d.textContent=hs[i%hs.length];
+  d.style.left=rand(2,94)+'%'; d.style.fontSize=rand(18,34)+'px';
+  d.style.animationDuration=rand(7,14)+'s'; d.style.animationDelay=rand(0,8)+'s';
+});
+fill('scene14',60,'star',d=>{
+  const size=rand(1,3);
+  d.style.width=size+'px'; d.style.height=size+'px';
+  d.style.left=rand(0,100)+'%'; d.style.top=rand(0,90)+'%';
+  d.style.animationDuration=rand(1.5,4)+'s'; d.style.animationDelay=rand(0,3)+'s';
+});
+fill('scene14',5,'shoot',d=>{
+  d.style.left=rand(55,100)+'%'; d.style.top=rand(0,40)+'%';
+  d.style.animationDuration=rand(2.5,5)+'s'; d.style.animationDelay=rand(0,8)+'s';
+});
+ 
 /* ---------------- paging ---------------- */
 const pages=Array.from(document.querySelectorAll('.page'));
 let current=0;
-
-// build progress dots, one per page
-const dotsWrap=document.getElementById('dots');
-pages.forEach((_,i)=>{
-  const d=document.createElement('span');
-  d.addEventListener('click',()=>goTo(i));
-  dotsWrap.appendChild(d);
-});
-const dotEls=Array.from(dotsWrap.children);
-
+ 
 function render(){
   pages.forEach((p,i)=>p.classList.toggle('active',i===current));
   document.getElementById('prevBtn').disabled = current===0;
   document.getElementById('nextBtn').disabled = current===pages.length-1;
-  document.getElementById('counter').textContent=(current+1)+' / '+pages.length;
-  dotEls.forEach((d,i)=>d.classList.toggle('on',i===current));
+  const counterEl=document.getElementById('counter');
+  counterEl.style.visibility = current===0 ? 'hidden' : 'visible';
+  counterEl.textContent = current+' / '+(pages.length-1);
 }
 function goTo(i){ current=Math.max(0,Math.min(pages.length-1,i)); render(); }
-
+ 
 document.getElementById('prevBtn').addEventListener('click',()=>goTo(current-1));
 document.getElementById('nextBtn').addEventListener('click',()=>goTo(current+1));
 document.addEventListener('keydown',e=>{
   if(e.key==='ArrowRight') goTo(current+1);
   if(e.key==='ArrowLeft') goTo(current-1);
 });
-
+ 
 // basic swipe support
 let touchX=null;
 document.getElementById('deck').addEventListener('touchstart',e=>touchX=e.touches[0].clientX);
@@ -571,9 +776,9 @@ document.getElementById('deck').addEventListener('touchend',e=>{
   if(Math.abs(dx)>50){ dx<0?goTo(current+1):goTo(current-1); }
   touchX=null;
 });
-
+ 
 render();
-
+ 
 /* ---------------- photo upload + persistence ---------------- */
 const STORAGE_KEY='birthdayCardData';
 function loadData(){
@@ -583,7 +788,7 @@ function saveData(data){
   try{ localStorage.setItem(STORAGE_KEY,JSON.stringify(data)); }catch(e){ /* storage full or unavailable */ }
 }
 const data=loadData();
-
+ 
 document.querySelectorAll('textarea.message').forEach(ta=>{
   const slot=ta.dataset.slot;
   if(data['msg_'+slot]!==undefined){ ta.value=data['msg_'+slot]; }
@@ -592,48 +797,78 @@ document.querySelectorAll('textarea.message').forEach(ta=>{
     saveData(data);
   });
 });
-
+ 
 /* ---------------- music player ---------------- */
 const audioEl=document.getElementById('audioEl');
 const playBtn=document.getElementById('playBtn');
 const trackName=document.getElementById('trackName');
 const volRange=document.getElementById('volRange');
-
+ 
 audioEl.volume=parseFloat(volRange.value);
-
-let songReady=false;
-let songFailed=false;
-
-audioEl.addEventListener('canplaythrough', ()=>{ songReady=true; });
-audioEl.addEventListener('error', markSongFailed, true);
+let usingDefaultChime=true;
+let chimeCtx=null, chimeTimer=null, chimePlaying=false;
+ 
+// Check whether music/song.mp3 actually loaded. If it fails, fall back to the chime.
+audioEl.addEventListener('error', useChimeFallback, true);
+audioEl.addEventListener('loadedmetadata', ()=>{
+  usingDefaultChime=false;
+  trackName.textContent='Your song is ready';
+});
+// some browsers fire error on the <source>, not the <audio>, so check it too
 const sourceEl=audioEl.querySelector('source');
-if(sourceEl) sourceEl.addEventListener('error', markSongFailed);
-
-function markSongFailed(){
-  songFailed=true;
-  trackName.textContent='Song file not found';
-  playBtn.disabled=true;
-  playBtn.style.opacity=.4;
-  playBtn.style.cursor='not-allowed';
+if(sourceEl) sourceEl.addEventListener('error', useChimeFallback);
+ 
+function useChimeFallback(){
+  usingDefaultChime=true;
+  trackName.textContent='music/song.mp3 not found — using default chime';
 }
-
+// if nothing has resolved after a moment, assume no file was found
+setTimeout(()=>{ if(trackName.textContent==='Loading song…') useChimeFallback(); }, 1200);
+ 
+function playChime(){
+  if(!chimeCtx) chimeCtx=new (window.AudioContext||window.webkitAudioContext)();
+  const notes=[523.25,587.33,659.25,523.25,659.25,783.99,880.00]; // original cheerful arpeggio
+  let i=0;
+  chimePlaying=true;
+  function step(){
+    if(!chimePlaying) return;
+    const osc=chimeCtx.createOscillator();
+    const gain=chimeCtx.createGain();
+    osc.type='triangle';
+    osc.frequency.value=notes[i%notes.length];
+    gain.gain.value=0.0001;
+    osc.connect(gain).connect(chimeCtx.destination);
+    const t=chimeCtx.currentTime;
+    gain.gain.exponentialRampToValueAtTime(volRange.value*0.25+0.001,t+0.05);
+    gain.gain.exponentialRampToValueAtTime(0.0001,t+0.4);
+    osc.start(t); osc.stop(t+0.45);
+    i++;
+    chimeTimer=setTimeout(step,360);
+  }
+  step();
+}
+function stopChime(){
+  chimePlaying=false;
+  if(chimeTimer) clearTimeout(chimeTimer);
+}
+ 
 playBtn.addEventListener('click',()=>{
-  if(songFailed) return;
-  if(audioEl.paused){
-    audioEl.play().catch(()=>{ /* most browsers need a user gesture, which this click provides */ });
-    playBtn.textContent='⏸';
-    playBtn.classList.add('spin');
+  if(usingDefaultChime){
+    if(chimePlaying){ stopChime(); playBtn.textContent='▶'; }
+    else { playChime(); playBtn.textContent='⏸'; }
   } else {
-    audioEl.pause();
-    playBtn.textContent='▶';
-    playBtn.classList.remove('spin');
+    if(audioEl.paused){ audioEl.play(); playBtn.textContent='⏸'; }
+    else { audioEl.pause(); playBtn.textContent='▶'; }
   }
 });
-
-audioEl.addEventListener('pause', ()=>{ playBtn.textContent='▶'; playBtn.classList.remove('spin'); });
-audioEl.addEventListener('play', ()=>{ playBtn.textContent='⏸'; playBtn.classList.add('spin'); });
-
 volRange.addEventListener('input',()=>{ audioEl.volume=parseFloat(volRange.value); });
+ 
+// cover button: go to next page and start the music (the click lets the browser allow audio)
+document.getElementById('openBtn').addEventListener('click',()=>{
+  goTo(1);
+  if(audioEl.paused && !chimePlaying) playBtn.click();
+});
 </script>
 </body>
 </html>
+ 
